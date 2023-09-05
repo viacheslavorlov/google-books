@@ -1,0 +1,70 @@
+.Search {
+    position: relative;
+    width: 100vw;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #8d8d8d;
+    background-image: url("../../../assets/book-for-header.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 0;
+}
+
+.Search::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.title {
+    display: block;
+    margin-bottom: 20px;
+    color: var(--white-bg);
+}
+
+.selectWrapper {
+    width: 60vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.input {
+    width: 60vw;
+    margin-bottom: 10px;
+    color: var(--black-color);
+}
+
+.search {
+    cursor: pointer;
+    position: relative;
+    top: 42%;
+    right: 25px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+}
+
+
+.label {
+    color: var(--white-bg);
+}
+
+
+.select {
+    color: var(--dark-gray);
+}
+
+.vertical {
+    flex-direction: column;
+}

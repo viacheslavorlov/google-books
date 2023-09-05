@@ -1,0 +1,51 @@
+.BookCard {
+    padding: 10px;
+    width: 300px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--light-gray);
+    gap: 10px;
+    overflow: hidden;
+}
+
+.imageContainer {
+    height: 200px;
+    width: 150px;
+    overflow: hidden;
+    align-self: center;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin-bottom: 10px;
+
+    box-shadow: var(--box-shadow-image)
+}
+
+.bookData {
+    height: 200px;
+}
+
+.categories {
+    color: var(--dark-gray);
+    text-decoration: underline;
+    margin-bottom: 10px;
+}
+
+.title {
+    margin-bottom: 10px;
+}
+
+.authors {
+    color: var(--dark-gray);
+}
+
+.link {
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
