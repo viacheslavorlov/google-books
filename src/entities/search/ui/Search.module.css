@@ -1,7 +1,7 @@
 .Search {
     position: relative;
-    width: 100vw;
-    height: 30vh;
+    width: 100%;
+    min-height: 30vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -11,6 +11,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    overflow: hidden;
     z-index: 0;
 }
 
@@ -45,12 +46,18 @@
     color: var(--black-color);
 }
 
+.inputWrapper {
+    display: flex;
+    position: relative;
+}
+
 .search {
+    align-self: baseline;
+    justify-self: center;
     cursor: pointer;
     position: relative;
-    top: 42%;
     right: 25px;
-    transform: translateY(-50%);
+    transform: translateY(4px);
     background: none;
     border: none;
 }

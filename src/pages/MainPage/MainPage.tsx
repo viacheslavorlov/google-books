@@ -1,5 +1,6 @@
 import {memo} from 'react';
-import {BooksList} from '../../features/BookList/BooksList';
+import {BooksList} from '../../features/BookList/ui/BooksList';
+import ErrorBoundary from '../../widgets/ErrorBoundary/ErrorBoundary';
 import cls from './MainPage.module.css';
 
 interface MainPageProps {
@@ -14,7 +15,9 @@ export const MainPage = memo((props: MainPageProps) => {
 
     return (
         <div className={cls.MainPage}>
-            <BooksList/>
+            <ErrorBoundary>
+                <BooksList/>
+            </ErrorBoundary>
         </div>
     );
 });

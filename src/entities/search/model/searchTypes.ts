@@ -7,4 +7,5 @@ export interface RequestParams {
     startIndex: number;
     subject: Subject;
     orderBy: OrderBy;
+    merge?: boolean;
 }

@@ -1,27 +1,27 @@
+import {forwardRef, InputHTMLAttributes, memo} from 'react';
 import {classNames} from '../../helpers/classNames/classNames';
 import cls from './Input.module.css';
-import {InputHTMLAttributes, memo, MutableRefObject} from 'react';
 
 interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'ref'> {
     className?: string;
-	type?: string;
-	placeholder?: string
-    ref?: MutableRefObject<HTMLInputElement | null>
+    type?: string;
+    placeholder?: string;
 }
 
-export const Input = memo((props: InputProps) => {
-	const {
-		className,
-		type = 'text',
-		...additionalArgs
-	} = props;
+export const Input = forwardRef<HTMLInputElement>((props: InputProps, ref) => {
+    const {
+        className,
+        type = 'text',
+        ...additionalArgs
+    } = props;
 
-	return (
-		<input
+    return (
+        <input
+            ref={ref}
             type={type}
             className={classNames(cls.Input, className)}
             {...additionalArgs}
         />
-	);
+    );
 });
 

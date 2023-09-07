@@ -31,12 +31,14 @@
 }
 
 .categories {
+    height: 21px;
     color: var(--dark-gray);
     text-decoration: underline;
     margin-bottom: 10px;
 }
 
 .title {
+    min-height: 25px;
     margin-bottom: 10px;
 }
 
