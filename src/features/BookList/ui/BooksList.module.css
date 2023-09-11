@@ -1,21 +1,26 @@
+.ListWrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .BooksList {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
     gap: 30px;
 }
 
-.count {
-    margin-top: 15px;
-    font-weight: 600;
-    flex-basis: 100%;
-    text-align: center;
-}
-
 .loader {
     flex-basis: 100%;
+}
+
+.placeholder {
+    flex-basis: 100%;
+    text-align: center;
 }
 
 .button {
@@ -27,6 +32,7 @@
     width: 200px;
     color: var(--black-color);
     background: var(--dark-gray);
+    margin: 20px;
 }
 
 .button:disabled {

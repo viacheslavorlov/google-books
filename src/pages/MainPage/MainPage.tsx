@@ -1,5 +1,6 @@
 import {memo} from 'react';
 import {BooksList} from '../../features/BookList/ui/BooksList';
+import {classNames} from '../../shared/helpers/classNames/classNames';
 import ErrorBoundary from '../../widgets/ErrorBoundary/ErrorBoundary';
 import cls from './MainPage.module.css';
 
@@ -14,7 +15,7 @@ export const MainPage = memo((props: MainPageProps) => {
 
 
     return (
-        <div className={cls.MainPage}>
+        <div className={classNames(cls.MainPage, className)}>
             <ErrorBoundary>
                 <BooksList/>
             </ErrorBoundary>

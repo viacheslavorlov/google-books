@@ -31,13 +31,14 @@ export const Search = memo((props: SearchProps) => {
     const {pathname} = useLocation();
     const dispatch = useDispatch();
     const [width, height] = useWindowSize();
-    const name = useSelector(searchNameSelector)
+    const name = useSelector(searchNameSelector);
     const subject = useSelector(searchSubjectSelector);
     const orderBy = useSelector(searchOrderSelector);
     const startIndex = useSelector(searchStartIndexSelector);
     const inputRef = useRef<HTMLInputElement | null>(null);
 
-    const {refetch, isFetching} = useGetBooksByNameQuery({
+
+    const {data, refetch, isFetching} = useGetBooksByNameQuery({
         name,
         subject,
         orderBy,
@@ -48,6 +49,8 @@ export const Search = memo((props: SearchProps) => {
     });
 
     const vertical = width > height ? '' : cls.vertical;
+    const verticalSearch = width > height && height > 450 ? '' : cls.verticalSearch;
+
 
     const onChangeOrder = useCallback(async (value: OrderBy) => {
         await dispatch(searchActions.setOrder(value));
@@ -55,8 +58,8 @@ export const Search = memo((props: SearchProps) => {
 
     const onChangeName = async () => {
         if (!isFetching) {
-            pathname !== '/' ? navigate('/') : null
-            dispatch(volumeApi.util.resetApiState())
+            pathname !== '/' ? navigate('/') : null;
+            dispatch(volumeApi.util.resetApiState());
             await dispatch(searchActions.setName(inputRef.current?.value));
             await refetch();
         }
@@ -68,7 +71,7 @@ export const Search = memo((props: SearchProps) => {
 
     const fetchBooksByEnter = async (event: KeyboardEvent) => {
         if ((event.code === 'Enter' || event.code === 'NumpadEnter') && inputRef.current?.value) {
-            dispatch(volumeApi.util.resetApiState())
+            dispatch(volumeApi.util.resetApiState());
             await onChangeName();
         }
     };
@@ -84,11 +87,13 @@ export const Search = memo((props: SearchProps) => {
     }, [fetchBooksByEnter]);
 
     return (
-        <div className={classNames(cls.Search, className)}>
+        <div
+            className={classNames(cls.Search, className, verticalSearch)}
+        >
             <h1 className={cls.title}>Search for books</h1>
             <div className={cls.inputWrapper}>
                 <Input // @ts-ignore
-                    placeholder={'Введите название книги'}
+                    placeholder={'Введите название'}
                     className={cls.input}
                     ref={inputRef}
                 />
@@ -99,21 +104,24 @@ export const Search = memo((props: SearchProps) => {
 
 
             <div className={classNames(cls.selectWrapper, vertical)}>
-                <label htmlFor="subject" className={cls.label}>Categories</label>
-                <Select
-                    id="subject"
-                    onChange={onChangeSubject}
-                    optionsVariants={optionsSubject}
-                    className={cls.select}
-                />
-                <label htmlFor="order" className={cls.label}>Sorting by</label>
-                <Select
-                    id="order"
-                    optionsVariants={optionsOrder}
-                    onChange={onChangeOrder}
-                    className={cls.select}
-                />
+                <div className={cls.label}>Categories
+                    <Select
+                        id="subject"
+                        onChange={onChangeSubject}
+                        optionsVariants={optionsSubject}
+                        className={cls.select}
+                    />
+                </div>
+                <div className={cls.label}>Sorting by
+                    <Select
+                        id="order"
+                        optionsVariants={optionsOrder}
+                        onChange={onChangeOrder}
+                        className={cls.select}
+                    />
+                </div>
             </div>
+            <p className={cls.count}>Found {data && data.count || 0} results</p>
         </div>
     );
 });

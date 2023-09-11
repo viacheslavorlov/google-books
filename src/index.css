@@ -6,7 +6,6 @@
 
 :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-
     /* Переменные */
     --black-color: #000;
     --white-bg: #fdfdfd;
@@ -15,3 +14,7 @@
     --box-shadow-image:  rgba(101, 101, 101, 0.75) 10px 20px 20px;
 }
 
+body, html, #root {
+    height: 100%;
+    width: 100%;
+}
